@@ -1,0 +1,29 @@
+{
+  "realm": "ticket-booking-realm",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "api-gateway-client",
+      "clientAuthenticatorType": "client-secret",
+      "secret": "your-client-secret",
+      "publicClient": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "protocol": "openid-connect"
+    }
+  ],
+  "users": [
+    {
+      "username": "testuser",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

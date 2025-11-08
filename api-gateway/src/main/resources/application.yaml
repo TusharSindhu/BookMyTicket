@@ -1,0 +1,59 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  # Configuration for Redis, which is used by the Rate Limiter
+  data:
+    redis:
+      host: redis
+      port: 6379
+
+  # Security Configuration for OAuth2 Resource Server (Keycloak)
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # This URI is where the gateway will fetch the public keys to verify JWT signatures.
+          issuer-uri: http://keycloak:8080/realms/ticket-booking-realm
+
+  # Spring Cloud Gateway Configuration
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            # Route for the Booking Service
+            - id: booking-service-route
+              uri: http://booking-service:8082
+              predicates:
+                - Path=/api/bookings/**
+              filters:
+                - name: RequestRateLimiter
+                  args:
+                    key-resolver: '#{@userKeyResolver}'
+                    # Configuration for the Redis-based rate limiter algorithm
+                    redis-rate-limiter:
+                      replenishRate: 1
+                      burstCapacity: 1
+                      requestedTokens: 1
+
+            # Route for the Inventory Service
+            - id: inventory-service-route
+              uri: http://inventory-service:8081
+              predicates:
+                - Path=/api/inventory/**
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+# When running in Kubernetes, Spring Cloud Gateway can automatically discover services.
+# For local testing with Docker Compose, we enable simple discovery client properties.
+# This tells the gateway that `lb://booking-service` should resolve to `http://booking-service:8082`.
+spring.cloud.discovery.client.simple.instances:
+  booking-service:
+    - uri: http://booking-service:8082
+  inventory-service:
+    - uri: http://inventory-service:8081
