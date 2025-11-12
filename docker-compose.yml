@@ -82,8 +82,8 @@ services:
       - "8083:8083"
     environment:
       - SPRING_KAFKA_CONSUMER_BOOTSTRAP_SERVERS=kafka:9092
-      - SPRING_MAIL_USERNAME=your-sandbox-smtp-username
-      - SPRING_MAIL_PASSWORD=your-sandbox-smtp-password
+      - SPRING_MAIL_USERNAME=<your-mailtrap-username>
+      - SPRING_MAIL_PASSWORD=<your-mailtrap-password>
     depends_on:
       - kafka
 
