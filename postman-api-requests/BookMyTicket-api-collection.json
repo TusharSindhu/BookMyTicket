@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "843f7327-49c4-4aeb-8dda-54056caee3d5",
+		"name": "BookMyTicket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49678107",
+		"_collection_link": "https://tusharsindhu-4020949.postman.co/workspace/TusharSindhu's-Workspace~2d6ac879-ca02-4763-8ce8-22243fc29462/collection/49678107-843f7327-49c4-4aeb-8dda-54056caee3d5?action=share&source=collection_link&creator=49678107"
+	},
+	"item": [
+		{
+			"name": "List-all-tickets",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJQdTNiWlc2TnVDajFZYzBMNi13aWc2aTNDMG9idF9WczgxVkJHOXlrZ2NjIn0.eyJleHAiOjE3NjI1OTQ0NjksImlhdCI6MTc2MjU5NDE2OSwianRpIjoiY2NlMzQ4MjAtODhiOC00YzljLWI5ZmEtY2IzYTgzN2U1NzBmIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3RpY2tldC1ib29raW5nLXJlYWxtIiwic3ViIjoiMDkzYzcxMDYtMWUzNy00NmQxLWJhYzYtZjE0YTE1NDJiZGNlIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYXBpLWdhdGV3YXktY2xpZW50Iiwic2Vzc2lvbl9zdGF0ZSI6IjRhMzdjNWJmLTBmYzktNDk3NC04YmFjLTY1NmU4MGNmN2U1MyIsImFjciI6IjEiLCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJzaWQiOiI0YTM3YzViZi0wZmM5LTQ5NzQtOGJhYy02NTZlODBjZjdlNTMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3R1c2VyIn0.M6LYka1lXRIkhsIoXBoSjSEMTdttFVkWxvn1Rduolw8VavPDyU-vr2YLVsDwqTa13G2hXiR5hr-aDRgN5EjBlrJAkBRcblH1LRaZ3AsYxj_-AWQAAeIVDL_ClQ5ApwKkj--CuMmPTv3DqtxxRCIfUesZFg4Yr9zyiBqtFyoHKEht6bDMV_dFvb9Ho4eUtwiJVdi3VYbV97ARnaffZfTHK5FTwjqF2ZTokj6PNuORYZn4AGJYQEN_Siz9FMWmqZ4BvGEBaFyhaVXgzQVNwoOW3KxBHoVyVYinnTAht-ohRHgBi1NSubitcJx1OAvr6CN61cWA_m4BoHO8sI8CgjTsew",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/inventory/tickets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"inventory",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ticket-with-{id}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJQdTNiWlc2TnVDajFZYzBMNi13aWc2aTNDMG9idF9WczgxVkJHOXlrZ2NjIn0.eyJleHAiOjE3NjI1ODYzNzQsImlhdCI6MTc2MjU4NjA3NCwianRpIjoiMmI3YzI1YTQtMzM4Mi00ZDJmLWFiNTgtMmU4YjUwZjRiZmMxIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3RpY2tldC1ib29raW5nLXJlYWxtIiwic3ViIjoiMDkzYzcxMDYtMWUzNy00NmQxLWJhYzYtZjE0YTE1NDJiZGNlIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYXBpLWdhdGV3YXktY2xpZW50Iiwic2Vzc2lvbl9zdGF0ZSI6ImYyYzYzOTgwLTU0YzgtNGM4ZS04MDFiLWQ5YTAwNTRiYjZiNCIsImFjciI6IjEiLCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJzaWQiOiJmMmM2Mzk4MC01NGM4LTRjOGUtODAxYi1kOWEwMDU0YmI2YjQiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3R1c2VyIn0.F9ENQrr_BR6ymCcDeNAlWRwe8I6DM1Or-IPKZTtIeol4-XcC3nRc2HpcpGLrr1eo9GGhxXmPZMsrL0-9QeLLLIdkdcj-dXmJUHbCPU-2rHSr1--HJHcCxRY6LxgQY7EKxeIm5LNUO-2M-6NUh0lOL1tDj5KYGIql8xTnlHjLbSQik_7llPuOeSwSCCO_vASkHy2Od_X_FchX_X_pBn4wcT2Rdeb2Zl4MGsvNai_L5DBHV9LyeYJVaEB53kTLyFX4S0rfh2Eu7A-8R2gRjEmCYLEed_MXETL0ZrPnnBptXU2jAxMXyva3s8xnNXKIoCEYdE5vDW6L4JALkawc16tszg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/inventory/tickets/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"inventory",
+						"tickets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book-ticket",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJQdTNiWlc2TnVDajFZYzBMNi13aWc2aTNDMG9idF9WczgxVkJHOXlrZ2NjIn0.eyJleHAiOjE3NjI1OTQ3MTgsImlhdCI6MTc2MjU5NDQxOCwianRpIjoiNjk4NjNiYjItN2MyZS00NjlmLWJiNDEtYjE0Mjc2ZWQ4ZjQyIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3RpY2tldC1ib29raW5nLXJlYWxtIiwic3ViIjoiMDkzYzcxMDYtMWUzNy00NmQxLWJhYzYtZjE0YTE1NDJiZGNlIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiYXBpLWdhdGV3YXktY2xpZW50Iiwic2Vzc2lvbl9zdGF0ZSI6IjlkOTBmOWIxLWYxMTctNGI4OC1iZmQ3LWY4MjI1ZGY0YjQ0NSIsImFjciI6IjEiLCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJzaWQiOiI5ZDkwZjliMS1mMTE3LTRiODgtYmZkNy1mODIyNWRmNGI0NDUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3R1c2VyIn0.nytxIiuzuD0zklkbBsybCkG7EovcuqFakcOvq5NpovGGgn97afjiM12bBWl2wbvZUY4wAIjM9QimMjyfxBAGuvj9lu64l5r6ytYccLOtmNFp5uIOIX7eaE6fwYtY-NJd3E7JQ0Blvp45Gvs_AN60ooHJ8C8keBnMdrvDoYmbOR1r7CphjLH-gcZxtLM1P5ik7qXrK9WNviXW5DXRUXih7wQa0ZozEv_aJmYIqJJeLMJaWxCMmWwDlEbXm2U67Hn8JOKBd7F8YxEDW-dsLFY0WqLiqbu0AoHGcJp5I1zva18RDhMfpcjYQSJEOqfv0LJ3NMFuGr4V42f3WeXSNmh_Hw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customerId\": 1, \"ticketId\": 1}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/bookings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-bearer-token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "api-gateway-client",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "your-client-secret",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "testuser",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8180/realms/ticket-booking-realm/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"realms",
+						"ticket-booking-realm",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

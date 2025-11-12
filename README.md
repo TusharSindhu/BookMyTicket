@@ -6,7 +6,19 @@ The core goal was to simulate a real-world system with high-concurrency demands 
 
 ## Architecture Diagram:
 
-![Architecture Diagram:](img/architecture-diagram.png)
+![Architecture Diagram](img/architecture-diagram.png)
+
+## Swagger-UI API endpoints:
+
+![API Documentation](img/Swagger-UI-inventory-service.png)
+
+## Postman Booking request:
+
+![Postman-screenshot](img/Postman-ss.png)
+
+## Mailtrap Order Confirmation:
+
+![Mail Confirmation](img/Mailtrap-ss.png)
 
 ## Project Learnings & Key Features:
 
@@ -55,17 +67,19 @@ This section details how to run the entire system on a local machine for develop
 
 #### Prerequisites-
 
-Git
-
-Java 17 (or higher) & Maven
-
-Docker & Docker Compose
+Git , Java 17 (or higher) & Maven, Docker,
 
 A Mailtrap.io account (for testing email notifications)
 
+
 ##### 1. Clone the Repository
 ```
-git clone [https://github.com/your-username/ticket-booking-system.git](https://github.com/your-username/ticket-booking-system.git)
+Connect to MySQL at localhost:3306 (root/password).
+
+1. Clone the Repository
+
+git clone [https://github.com/TusharSindhu/BookMyTicket.git]
+
 cd ticket-booking-system
 ```
 
@@ -80,20 +94,20 @@ Find and replace <your_mailtrap_username> and <your_mailtrap_password> with your
 #### 3. Build and Run with Docker Compose
 
 This single command builds all 4 service images and starts all containers.
-```
-docker-compose build
-docker-compose up
-```
+
+docker-compose up -d --build
 
 The system is now running. It may take a minute for all services to start.
 
 #### 4. How to Test the Full Booking Flow
 
-Use Postman or a similar tool to simulate a client application.
+Use Postman or a similar tool to simulate a client application. Use my collection to test API endpoints:
+
+[Download the Postman Collection](postman-api-requests/BookMyTicket-api-collection.json)
 
 ##### Step 1: Get an Authentication Token from Keycloak
 
-Send a POST request to http://localhost:8180/realms/ticket-booking-realm/protocol/openid-connect/token with the body as x-www-form-urlencoded:
+Send a POST request to "Get-bearer-token" or http://localhost:8180/realms/ticket-booking-realm/protocol/openid-connect/token with the body as x-www-form-urlencoded:
 
 client_id: api-gateway-client
 
@@ -105,14 +119,14 @@ username: testuser
 
 password: password
 
-Copy the access_token from the JSON response.
+Copy the access_token from the JSON response and then paste in every requests Header -> Authentication: Bearer <paste-token>
 
 ##### Step 2: Make a Booking Request (via API Gateway)
 
 Create a new POST request to the API Gateway's booking endpoint:
 
-POST http://localhost:8080/api/bookings
-
+POST Book-ticket or http://localhost:8080/api/bookings
+```bash
 Headers:
 
 Authorization: Bearer <paste_your_access_token_here>
@@ -125,16 +139,16 @@ Body:
 "customerId": 1,
 "ticketId": 1
 }
-
+```
 
 (Note: Sample data is pre-loaded by Flyway and CommandLineRunners)
 
 ##### Step 3: Check the Results
 
-**Response:** You should get a 200 OK response with the confirmed CONFIRMED order details.
+Response: You should get a 200 OK response with the CONFIRMED order details.
 
 **Logs:** Check the logs (docker-compose logs -f). You'll see the entire flow.
 
 **Mailtrap:** Open your Mailtrap inbox. You will see the booking confirmation email.
 
-**Database:** Connect to MySQL at localhost:3306 (root/password). Check the inventory_db.tickets and booking_db.booking_orders tables to see the changes.
+Database: Check the inventory_db.tickets and booking_db.booking_orders tables to see the changes.
